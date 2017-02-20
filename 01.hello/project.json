@@ -1,16 +1,17 @@
 {
   "version": "1.0.0-*",
   "buildOptions": {
-    "debugType": "portable",
-    "emitEntryPoint": true
+    "debugType": "portable",  // 调试文件
+    "emitEntryPoint": true    // 是否为有入口程序
   },
-  "dependencies": {},
-  "frameworks": {
-    "netcoreapp1.0": {
+  "dependencies": {
+  },         // 针对所有framework的依赖
+  "frameworks": {             // 针对具体framework的依赖
+    "netcoreapp1.0": {        // netcoreapp1.0为具体的framwork
       "dependencies": {
-        "Microsoft.NETCore.App": {
+        "Microsoft.NETCore.App": {  // 依赖的包名
           "type": "platform",
-          "version": "1.0.1"
+          "version": "1.1.0"
         }
       },
       "imports": "dnxcore50"
