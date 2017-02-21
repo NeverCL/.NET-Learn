@@ -47,7 +47,5 @@
     - Scope或者Transient：ServiceProvider自行承担由它提供的服务实例的回收工作，当它的Dispose方法被调用的时候，这些服务实例的Dispose方法会自动执行。
 
 
-
-
-
+## 03. 文件系统FileProvider
 
