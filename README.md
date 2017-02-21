@@ -68,5 +68,9 @@
     - `ConfigurationBuilder`:Configuration对象的创建者
     - `ConfigurationSource`:ConfigurationSource代表数据源
 
+- "Options"反射
+    - AddOptions()
+    - Configure<T>(config)
+    - GetService<IOptions<App>>()
 
 
