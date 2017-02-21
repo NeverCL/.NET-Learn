@@ -29,11 +29,20 @@ namespace ConsoleApplication
                 // .ReadAllTextAsync("1.txt").Result;  // 1.txt 是基于D:\Test目录下的
                 .ReadAllTextAsync("data.txt").Result;  // data.txt 是嵌入到程序集中的
             System.Console.WriteLine(content);
-
             #region 文件变化
-            // 监听文件变化
+            // 监听文件变化1
             ChangeToken.OnChange(() => physicalFileProvider.Watch(filePath)
             , () => System.Console.WriteLine(File.ReadAllText(path + filePath)));
+
+            // 监听文件变化2:由于下面的方式比较麻烦 故用上面的方式
+            // Action<object> callback = null;
+            // callback = obj =>
+            // {
+            //     Console.WriteLine("11:" + File.ReadAllText(path + filePath));
+            //     physicalFileProvider.Watch(filePath).RegisterChangeCallback(callback, null);
+            // };
+            // physicalFileProvider.Watch(filePath).RegisterChangeCallback(callback, null);
+
             // 模拟文件变化
             while (true)
             {

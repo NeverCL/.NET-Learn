@@ -49,3 +49,24 @@
 
 ## 03. 文件系统FileProvider
 
+- FileProvider
+    - 抽象的文件 Provider
+    - PhysicalFileProvider
+    - EmbeddedFileProvider
+
+- 监控文件变化
+    - 通过Watch() 和 ChangeToken.OnChange()可以实现监听文件
+    - filter格式
+        - foobar/data.txt   |   存储在目录foobar下的文件data.txt。
+        - foobar/*.txt      |   存储在目录foobar下的所有.txt文件。
+        - foobar/*.*        |   存储在目录foobar下的所有文件。
+        - foobar//*.*       |   存储在目录foobar的所有子目录下的所有文件。
+
+## 04. 配置文件
+- 三要素
+    - `Configuration`:我们直接使用
+    - `ConfigurationBuilder`:Configuration对象的创建者
+    - `ConfigurationSource`:ConfigurationSource代表数据源
+
+
+
