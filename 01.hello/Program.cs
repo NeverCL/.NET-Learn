@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ConsoleApplication
 {
@@ -6,7 +7,9 @@ namespace ConsoleApplication
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Console.WriteLine("Hello World!你好,世界!");
+            Console.WriteLine(Console.ReadLine());
             Console.ReadKey();
         }
     }
