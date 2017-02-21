@@ -31,7 +31,23 @@
     - 获取:通过IServiceProvider接口即可获取对象
 
 - 注册泛型
-    - 
+    - 例子:serviceCollection.AddTransient(typeof(IFoo<>),typeof(Foo<>));
+    - 例子:serviceCollection.AddTransient(typeof(IFoo<,>),typeof(Foo<,>));
+
+- 构造函数的选择
+    - 每一个候选构造函数的参数类型集合都是这个构造函数参数类型集合的子集.
+
+- 生命周期管理
+    - Singleton：ServiceProvider创建的服务实例保存在作为根节点的ServiceProvider上，所有具有同一根节点的所有ServiceProvider提供的服务实例均是同一个对象。
+    - Scoped：ServiceProvider创建的服务实例由自己保存，所以同一个ServiceProvider对象提供的服务实例均是同一个对象。
+    - Transient：针对每一次服务提供请求，ServiceProvider总是创建一个新的服务实例。
+
+- 服务实例的回收
+    - Singleton：由作为根的ServiceProvider负责，后者的Dispose方法被调用的时候，这些服务实例的Dispose方法会自动执行。
+    - Scope或者Transient：ServiceProvider自行承担由它提供的服务实例的回收工作，当它的Dispose方法被调用的时候，这些服务实例的Dispose方法会自动执行。
+
+
+
 
 
 

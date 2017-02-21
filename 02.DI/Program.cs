@@ -8,11 +8,37 @@ namespace ConsoleApplication
         public static void Main(string[] args)
         {
             IServiceCollection serviceCollection = new ServiceCollection();
+
             // 注册泛型接口实现
-            serviceCollection.AddTransient(typeof(IFoo<>),typeof(Foo<>));
+            serviceCollection.AddScoped(typeof(IFoo<>), typeof(Foo<>));
+            serviceCollection.AddTransient(typeof(IFoo<>), typeof(Foo<>));
+            // 以最后一次注册类型为准
+            serviceCollection.AddSingleton(typeof(IFoo<>), typeof(Foo<>));
+            // 根据ServiceCollection生成ServiceProvider
             var provider = serviceCollection.BuildServiceProvider();
+            // 获取实例
             provider.GetService(typeof(IFoo<string>));
+            // 获取子scope的provider
+            var scope = provider.GetService<IServiceScopeFactory>().CreateScope();
+            scope.ServiceProvider.GetService<IFoo<string>>();
+
             Console.ReadKey();
+        }
+    }
+
+    public interface IFoobar : IDisposable
+    { }
+
+    public class Foobar : IFoobar
+    {
+        ~Foobar()
+        {
+            Console.WriteLine("Foobar.Finalize()");
+        }
+
+        public void Dispose()
+        {
+            Console.WriteLine("Foobar.Dispose()");
         }
     }
 
@@ -24,7 +50,7 @@ namespace ConsoleApplication
         }
     }
 
-    public interface IFoo<T1>
+    public interface IFoo<T>
     {
 
     }
